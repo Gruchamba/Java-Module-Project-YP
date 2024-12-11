@@ -40,6 +40,8 @@ public class Main {
 
         }
 
+        scanner.close();
+
         Race race = new Race();
         race.start(carList);
 
