@@ -9,19 +9,26 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         for (int i = 1; i <= 3; i++) {
-            System.out.print("Введите названия автомобиля #" + i + ": ");
+            System.out.print("Введите название автомобиля #" + i + ": ");
             String name = scanner.next();
 
             int speed;
             while (true) {
                 System.out.print("Введите скорость автомобиля #" + i + ": ");
-                speed = scanner.nextInt();
 
-                if (speed > 0 && speed <= 250) {
-                    break;
-                } else {
-                    System.out.println("Некорректное значение скорости: " + speed + ". Допустимый диапазон от 1 до 250");
+                try {
+                    speed = scanner.nextInt();
+
+                    if (speed > 0 && speed <= 250) {
+                        break;
+                    } else {
+                        System.out.println("Некорректное значение скорости: " + speed + ". Допустимый диапазон от 1 до 250");
+                    }
+
+                } catch (Exception e) {
+                    scanner.next();
                 }
+
             }
 
             carList.add(
@@ -32,6 +39,8 @@ public class Main {
             );
 
         }
+
+        scanner.close();
 
         Race race = new Race();
         race.start(carList);
